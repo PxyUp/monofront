@@ -1,0 +1,34 @@
+<html>
+<head>
+    <title>Monopolly</title>
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+<body class="app">
+<div class="header">
+    <div class="content">
+        <div class="title">{{ title }}</div>
+        <div class="menu" >
+            <a class="item" v-for="item in menu" href="{{ item.href }}">{{ app.translator(item.title) }}</a>
+        </div>
+    </div>
+</div>
+<div class="content"></div>
+
+<div class="footer">
+    <div class="content">
+        <div class="languages">
+            <div class="lang" v-bind:class="[app.getCurrentLocale() == lang ? 'current' : '']" v-for="lang in languages" v-on:click="changeLocale(lang)">{{ lang.toUpperCase() }}</div>
+        </div>
+    </div>
+</div>
+
+<script src="js/lib/vue.min.js"></script>
+<script src="js/lib/underscore-min.js"></script>
+<script src="js/app/app.js"></script>
+<script src="js/app/lang.js"></script>
+<script src="js/app/translator.js"></script>
+<script src="js/app/component/header.js"></script>
+<script src="js/app/component/footer.js"></script>
+</body>
+</html>
