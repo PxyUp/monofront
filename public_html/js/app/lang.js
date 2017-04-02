@@ -13,6 +13,15 @@ Application.prototype.lang = {
                     }
                 }
             }
+        },
+        "home": {
+            "content": "Привет на домашней странице"
+        },
+        "about": {
+            "content": "Привет на about"
+        },
+        "faq": {
+            "content": "Привет на faq"
         }
     },
     "en": {
@@ -26,6 +35,16 @@ Application.prototype.lang = {
                     }
                 }
             }
+        },
+        "home": {
+            "content": "Hello from home"
+        },
+        "about": {
+            "content": "Hello from about"
+        },
+        "faq": {
+            "content": "Hello from faq"
         }
+
     }
 }

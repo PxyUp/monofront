@@ -12,6 +12,10 @@ a {
   position: absolute;
   height: 100%;
   width: 100%;
+  > .content {
+    width: 100%;
+    height: calc(~"100% - 80px");
+  }
   > .header {
     position: relative;
     width: 100%;
@@ -32,6 +36,9 @@ a {
           margin: 0 10px 0 10px;
           font-size: 22px;
           color: rgba(255, 255, 255, 0.8);
+          &.router-link-active {
+            color: rgb(8, 255, 4);
+          }
           &:hover {
             cursor: pointer;
             color: rgba(255, 255, 255, 1);
@@ -56,7 +63,7 @@ a {
       max-width: 1280px;
       > .languages {
         > .lang {
-          &.current{
+          &.current {
             color: black;
           }
           float: left;

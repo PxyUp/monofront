@@ -7,36 +7,57 @@ class Application {
         this.allowLocale = ["ru", "en"];
         this.locale = locale;
         this.component = {};
+        this.app = {};
+        this.router = {};
+        this.eventGlobal = new Vue();
     }
 
     changeLocale(locale) {
         if (this.allowLocale.indexOf(locale) != -1) {
             this.locale = locale;
-            this.refreshAllComponent();
+            this.eventGlobal.$emit("changeLocale");
         }
+    }
+
+    initApplication(selector) {
+        this.router = new VueRouter({
+            routes: this.initRoute(),
+            mode: 'history',
+            base: "/"
+        });
+        this.app = new Vue({
+            router: this.router
+        }).$mount(selector);
+    }
+
+    initRoute() {
+        return [
+            {path: '/', component: this.getComponent("home")},
+            {path: '/about', component: this.getComponent("about")},
+            {path: '/faq', component: this.getComponent("faq")},
+        ]
     }
 
     addComponent(alias, component) {
         this.component[alias] = component;
     }
 
-    refreshComponent(alias) {
-        this.component[alias].$forceUpdate();
+    getComponent(alias) {
+        return this.component[alias]
     }
 
-    refreshAllComponent() {
-        Object.keys(this.component).forEach((elem) => {
-            this.component[elem].$forceUpdate()
-        })
+    getEvents() {
+        return this.eventGlobal;
     }
 
     getAllowLocale() {
         return this.allowLocale
     }
 
-    getCurrentLocale(){
+    getCurrentLocale() {
         return this.locale
     }
 }
 
-let app = new Application();
+Vue.use(VueRouter);
+const app = new Application();
